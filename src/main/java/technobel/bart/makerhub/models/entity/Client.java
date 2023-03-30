@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 
 @Entity
 @Getter @Setter
@@ -21,4 +24,8 @@ public class Client {
     private String firstname;
 
     private int phonenumber;
+
+    @OneToMany(mappedBy = "client", orphanRemoval = true)
+    private Set<Order> orders = new LinkedHashSet<>();
+
 }

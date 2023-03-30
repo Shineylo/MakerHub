@@ -28,4 +28,8 @@ public class Order {
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private Set<OrderItem> items = new LinkedHashSet<>();
 
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
+
 }
