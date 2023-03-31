@@ -11,7 +11,7 @@ public interface IngredientService {
 
     void delete(long ingredientId);
 
-    void update(long ingredientId);
+    void update(long id, IngredientForm form);
 
     List<IngredientDTO> getAll();
 
