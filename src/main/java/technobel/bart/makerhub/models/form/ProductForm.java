@@ -14,15 +14,13 @@ public class ProductForm {
     private String name;
     @NotBlank
     private String recipe;
-    private Set<IngredientForm> ingredients ;
+    private Set<IngredientForm> ingredients;
 
     public Product toEntity(){
         Product product = new Product();
 
         product.setName(name);
         product.setRecipe(recipe);
-
-
 
         return product;
     }

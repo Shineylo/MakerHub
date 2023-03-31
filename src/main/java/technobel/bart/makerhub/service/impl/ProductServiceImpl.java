@@ -20,7 +20,6 @@ public class ProductServiceImpl implements ProductService {
 
     private final IngredientRepository ingredientRepository;
     private final ProductRepository productRepository;
-
     private final QuantityIngredient quantityIngredient;
     private final QuantityIngredientRepository quantityIngredientRepository;
 
