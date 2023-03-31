@@ -22,7 +22,6 @@ public class IngredientForm {
     private String brand;
 
     public Ingredient toEntity(){
-
         Ingredient ingredient = new Ingredient();
 
         ingredient.setName(this.name);
@@ -30,6 +29,5 @@ public class IngredientForm {
         ingredient.setQuantity(this.quantity);
 
         return ingredient;
-
     }
 }

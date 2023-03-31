@@ -1,5 +1,6 @@
 package technobel.bart.makerhub.service.impl;
 
+import org.springframework.stereotype.Service;
 import technobel.bart.makerhub.models.dto.IngredientDTO;
 import technobel.bart.makerhub.models.entity.Brand;
 import technobel.bart.makerhub.models.entity.Ingredient;
@@ -12,6 +13,7 @@ import technobel.bart.makerhub.service.IngredientService;
 
 import java.util.List;
 
+@Service
 public class IngredientServiceImpl implements IngredientService {
 
     private final UnitOfMeasureRepository unitOfMeasureRepository;
@@ -54,13 +56,15 @@ public class IngredientServiceImpl implements IngredientService {
         Ingredient toUpdate = ingredientRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Ingredient not found"));
 
+        toUpdate = form.toEntity();
+
         UnitOfMeasure unit = unitOfMeasureRepository.findByName(form.getUnitOfMeasure())
-                .orElseThrow(() -> new RuntimeException("Ingredient not found"));
+                .orElseThrow(() -> new RuntimeException("Unit of measure not found"));
 
         toUpdate.setUnitOfMeasure(unit);
 
         Brand brand = brandRepository.findByName(form.getBrand())
-                .orElseThrow(() -> new RuntimeException("Ingredient not found"));
+                .orElseThrow(() -> new RuntimeException("Brand not found"));
 
         toUpdate.setBrand(brand);
 

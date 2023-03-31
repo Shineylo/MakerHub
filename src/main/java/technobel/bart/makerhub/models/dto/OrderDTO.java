@@ -24,7 +24,7 @@ public class OrderDTO {
         if( entity == null )
             return null;
 
-        return new BrandDTO(
+        return new OrderDTO(
                 entity.getId(),
                 entity.getDateOfOrder(),
                 entity.getDateOfDelivery(),

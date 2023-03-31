@@ -24,9 +24,7 @@ public class Product {
     private String recipe;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-    private Set<Recipe> quantities = new LinkedHashSet<>();
+    private Set<QuantityIngredient> ingredients = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
-    private Set<OrderItem> items = new LinkedHashSet<>();
 
 }

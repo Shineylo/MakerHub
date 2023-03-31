@@ -8,7 +8,7 @@ import java.io.Serializable;
 @Entity
 @Getter
 @Setter
-public class Recipe {
+public class QuantityIngredient {
 
     @EmbeddedId
     private Id id;

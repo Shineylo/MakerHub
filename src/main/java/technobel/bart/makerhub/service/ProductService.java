@@ -1,12 +1,11 @@
 package technobel.bart.makerhub.service;
 
-import technobel.bart.makerhub.models.dto.productDTO;
-import technobel.bart.makerhub.models.form.productForm;
+import technobel.bart.makerhub.models.dto.ProductDTO;
+import technobel.bart.makerhub.models.form.ProductForm;
 
 import java.util.List;
 
 public interface ProductService {
-
     void create(ProductForm form);
 
     void delete(long productId);
