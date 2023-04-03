@@ -84,4 +84,5 @@ public class IngredientServiceImpl implements IngredientService {
                 .map(IngredientDTO::toDto)
                 .orElseThrow(() -> new RuntimeException("Ingredient not found"));
     }
+
 }

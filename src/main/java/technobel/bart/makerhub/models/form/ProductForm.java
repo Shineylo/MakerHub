@@ -2,9 +2,7 @@ package technobel.bart.makerhub.models.form;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
-import technobel.bart.makerhub.models.entity.OrderItem;
 import technobel.bart.makerhub.models.entity.Product;
-import technobel.bart.makerhub.models.entity.QuantityIngredient;
 import java.util.Set;
 
 @Data

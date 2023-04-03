@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Entity
 @Getter
 @Setter
@@ -22,6 +24,10 @@ public class Ingredient {
 
     @Column(nullable = false)
     private String quantity;
+
+    @Column(nullable = false)
+    private LocalDate expiration;
+
 
     @ManyToOne
     @JoinColumn(name = "unit_of_measure_id")

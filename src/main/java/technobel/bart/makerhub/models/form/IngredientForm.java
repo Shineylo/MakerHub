@@ -6,6 +6,8 @@ import jakarta.validation.constraints.Positive;
 import lombok.Data;
 import technobel.bart.makerhub.models.entity.Ingredient;
 
+import java.time.LocalDate;
+
 @Data
 public class IngredientForm {
 
@@ -17,6 +19,8 @@ public class IngredientForm {
     @NotBlank
     private String quantity;
     @NotBlank
+    private LocalDate expiration;
+    @NotBlank
     private String unitOfMeasure;
     @NotBlank
     private String brand;
@@ -26,6 +30,7 @@ public class IngredientForm {
 
         ingredient.setName(this.name);
         ingredient.setPrice(this.price);
+        ingredient.setExpiration(this.expiration);
         ingredient.setQuantity(this.quantity);
 
         return ingredient;

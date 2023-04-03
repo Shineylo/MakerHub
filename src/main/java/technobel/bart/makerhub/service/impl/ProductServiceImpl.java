@@ -20,14 +20,12 @@ public class ProductServiceImpl implements ProductService {
 
     private final IngredientRepository ingredientRepository;
     private final ProductRepository productRepository;
-    private final QuantityIngredient quantityIngredient;
     private final QuantityIngredientRepository quantityIngredientRepository;
 
-    public ProductServiceImpl(IngredientRepository ingredientRepository, ProductRepository productRepository, QuantityIngredient quantityIngredient,
+    public ProductServiceImpl(IngredientRepository ingredientRepository, ProductRepository productRepository,
                               QuantityIngredientRepository quantityIngredientRepository) {
         this.ingredientRepository = ingredientRepository;
         this.productRepository = productRepository;
-        this.quantityIngredient = quantityIngredient;
         this.quantityIngredientRepository = quantityIngredientRepository;
     }
 
@@ -60,7 +58,7 @@ public class ProductServiceImpl implements ProductService {
         if(!productRepository.existsById(id))
             throw new RuntimeException("Product not found");
 
-        ingredientRepository.deleteById(id);
+        productRepository.deleteById(id);
     }
 
     @Override
@@ -74,13 +72,17 @@ public class ProductServiceImpl implements ProductService {
         for (ProductForm.IngredientForm ingredient : ingForms ) {
             QuantityIngredient qttIng = new QuantityIngredient();
 
+            Ingredient ing = ingredientRepository.findById( ingredient.getId() ).orElseThrow();
+
             qttIng.setQtt(ingredient.getQuantity());
             qttIng.setProduct(toUpdate);
+            qttIng.setIngredient(ing);
 
             toUpdate.getIngredients().add(qttIng);
             quantityIngredientRepository.save(qttIng);
-
         }
+
+        quantityIngredientRepository.saveAll(toUpdate.getIngredients());
     }
 
     @Override
