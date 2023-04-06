@@ -2,7 +2,6 @@ package technobel.bart.makerhub.models.dto;
 
 import lombok.Builder;
 import lombok.Data;
-import technobel.bart.makerhub.models.entity.Ingredient;
 import technobel.bart.makerhub.models.entity.Brand;
 
 import java.util.LinkedHashSet;

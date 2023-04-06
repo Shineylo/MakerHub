@@ -20,6 +20,7 @@ public class OrderForm {
 
     @NotBlank
     private Client client;
+    //TODO Id not the object
 
     public Order toEntity(){
         Order order = new Order();
