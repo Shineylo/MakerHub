@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -19,22 +21,11 @@ public class Ingredient {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
-    private double price;
-
-    @Column(nullable = false)
-    private String quantity;
-
-    @Column(nullable = false)
-    private LocalDate expiration;
-
+    @OneToMany(mappedBy = "ingredient", cascade = CascadeType.ALL)
+    private Set<IngredientBrand> ingredients = new LinkedHashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "unit_of_measure_id")
     private UnitOfMeasure unitOfMeasure;
-
-    @ManyToOne
-    @JoinColumn(name = "brand_id")
-    private Brand brand;
 
 }

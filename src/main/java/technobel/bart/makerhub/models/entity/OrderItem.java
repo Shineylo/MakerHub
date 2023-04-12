@@ -21,8 +21,8 @@ public class OrderItem {
     @ManyToOne
     private Product item;
 
-    @Column(name = "product_qtt", nullable = false)
-    private int qtt = 1;
+    @Column(name = "product_quantity", nullable = false)
+    private int quantity = 1;
 
     @Data
     @NoArgsConstructor

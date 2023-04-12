@@ -21,9 +21,9 @@ public class IngredientForm {
     @NotBlank
     private LocalDate expiration;
     @NotBlank
-    private String unitOfMeasure;
+    private Long unitOfMeasureId;
     @NotBlank
-    private String brand;
+    private Long brandId;
 
     public Ingredient toEntity(){
         Ingredient ingredient = new Ingredient();

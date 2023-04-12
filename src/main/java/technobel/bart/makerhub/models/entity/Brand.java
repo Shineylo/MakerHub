@@ -19,7 +19,5 @@ public class Brand {
     @Column(nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "brand", orphanRemoval = true)
-    private Set<Ingredient> ingredients = new LinkedHashSet<>();
 
 }

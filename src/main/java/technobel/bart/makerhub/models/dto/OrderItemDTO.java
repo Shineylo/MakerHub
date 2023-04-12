@@ -21,7 +21,7 @@ public class OrderItemDTO {
         return new OrderItemDTO(
                 entity.getOrder(),
                 entity.getItem(),
-                entity.getQtt()
+                entity.getQuantity()
         );
     }
 }

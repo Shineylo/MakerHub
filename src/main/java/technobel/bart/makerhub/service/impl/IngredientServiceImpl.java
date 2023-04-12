@@ -30,15 +30,15 @@ public class IngredientServiceImpl implements IngredientService {
     public void create(IngredientForm form) {
         Ingredient ingredient = form.toEntity();
 
-        UnitOfMeasure unit = unitOfMeasureRepository.findByName(form.getUnitOfMeasure())
-                .orElseThrow(() -> new RuntimeException("Ingredient not found"));
+        ingredient.setUnitOfMeasure(
+                unitOfMeasureRepository.findById(form.getUnitOfMeasureId())
+                        .orElseThrow(() -> new RuntimeException("Unit of Measure not found"))
+        );
 
-        ingredient.setUnitOfMeasure(unit);
-
-        Brand brand = brandRepository.findByName(form.getBrand())
-                .orElseThrow(() -> new RuntimeException("Ingredient not found"));
-
-        ingredient.setBrand(brand);
+        ingredient.setBrand(
+                brandRepository.findById(form.getBrandId())
+                        .orElseThrow(() -> new RuntimeException("Brand not found"))
+        );
 
         ingredientRepository.save(ingredient);
     }
@@ -58,15 +58,15 @@ public class IngredientServiceImpl implements IngredientService {
 
         toUpdate = form.toEntity();
 
-        UnitOfMeasure unit = unitOfMeasureRepository.findByName(form.getUnitOfMeasure())
-                .orElseThrow(() -> new RuntimeException("Unit of measure not found"));
+        toUpdate.setUnitOfMeasure(
+                unitOfMeasureRepository.findById(form.getUnitOfMeasureId())
+                        .orElseThrow(() -> new RuntimeException("Unit of Measure not found"))
+        );
 
-        toUpdate.setUnitOfMeasure(unit);
-
-        Brand brand = brandRepository.findByName(form.getBrand())
-                .orElseThrow(() -> new RuntimeException("Brand not found"));
-
-        toUpdate.setBrand(brand);
+        toUpdate.setBrand(
+                brandRepository.findById(form.getBrandId())
+                        .orElseThrow(() -> new RuntimeException("Brand not found"))
+        );
 
         ingredientRepository.save(toUpdate);
     }

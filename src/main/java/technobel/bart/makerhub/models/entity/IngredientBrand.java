@@ -4,25 +4,32 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 @Entity
 @Getter
 @Setter
-public class QuantityIngredient {
+public class IngredientBrand {
 
     @EmbeddedId
     private Id id;
-
-    @MapsId("productId")
-    @ManyToOne
-    private Product product;
 
     @MapsId("ingredientId")
     @ManyToOne
     private Ingredient ingredient;
 
-    @Column(name = "ingredient_quantity", nullable = false)
-    private int quantity = 1;
+    @MapsId("brandId")
+    @ManyToOne
+    private Brand brand;
+
+    @Column(name = "ingredient_price",nullable = false)
+    private double price;
+
+    @Column(name = "stock_quantity",nullable = false)
+    private String quantity;
+
+    @Column(name = "ingredient_expiration",nullable = false)
+    private LocalDate expiration;
 
     @Data
     @NoArgsConstructor
@@ -30,10 +37,11 @@ public class QuantityIngredient {
     @Embeddable
     public static class Id implements Serializable {
 
-        @Column(name = "product_id")
-        private Long productId;
         @Column(name = "ingredient_id")
         private Long ingredientId;
+        @Column(name = "brand_id")
+        private Long brandId;
 
     }
+
 }
