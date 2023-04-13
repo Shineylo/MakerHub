@@ -2,8 +2,10 @@ package technobel.bart.makerhub.controller;
 
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
+import technobel.bart.makerhub.models.dto.IngredientBrandDTO;
 import technobel.bart.makerhub.models.dto.IngredientDTO;
 import technobel.bart.makerhub.models.form.IngredientForm;
+import technobel.bart.makerhub.service.IngredientBrandService;
 import technobel.bart.makerhub.service.IngredientService;
 
 import java.util.List;
@@ -14,9 +16,11 @@ import java.util.List;
 public class IngredientController {
 
     private final IngredientService ingredientService;
+    private final IngredientBrandService ingredientBrandService;
 
-    public IngredientController(IngredientService ingredientService) {
+    public IngredientController(IngredientService ingredientService, IngredientBrandService ingredientBrandService) {
         this.ingredientService = ingredientService;
+        this.ingredientBrandService = ingredientBrandService;
     }
 
     @PostMapping("/new")
@@ -30,8 +34,8 @@ public class IngredientController {
     }
 
     @GetMapping("/{id:[0-9]+}")
-    public IngredientDTO displayIngredientDetails(@PathVariable long id) {
-        return ingredientService.getOne(id);
+    public List<IngredientBrandDTO> displayAllOfIngredient(@PathVariable long id) {
+        return ingredientBrandService.getAllOfOneIngredient(id);
     }
 
 

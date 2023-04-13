@@ -1,12 +1,15 @@
 package technobel.bart.makerhub.service.impl;
 
 import org.springframework.stereotype.Service;
+import technobel.bart.makerhub.models.dto.IngredientBrandDTO;
 import technobel.bart.makerhub.models.entity.IngredientBrand;
 import technobel.bart.makerhub.models.form.IngredientBrandForm;
 import technobel.bart.makerhub.repository.BrandRepository;
 import technobel.bart.makerhub.repository.IngredientBrandRepository;
 import technobel.bart.makerhub.repository.IngredientRepository;
 import technobel.bart.makerhub.service.IngredientBrandService;
+
+import java.util.List;
 
 @Service
 public class IngredientBrandServiceImpl implements IngredientBrandService {
@@ -36,5 +39,12 @@ public class IngredientBrandServiceImpl implements IngredientBrandService {
         );
 
         ingredientBrandRepository.save(ingredientBrand);
+    }
+
+    @Override
+    public List<IngredientBrandDTO> getAllOfOneIngredient(long id){
+        return ingredientBrandRepository.findByIngredientId(id).stream()
+                .map(IngredientBrandDTO[]::toDto)
+                .toList();
     }
 }
