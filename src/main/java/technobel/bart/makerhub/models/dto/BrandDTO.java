@@ -14,7 +14,6 @@ public class BrandDTO {
 
     private Long id;
     private String name;
-    private Set<IngredientDTO> ingredients = new LinkedHashSet<>();
 
     public static BrandDTO toDto(Brand entity){
         if( entity == null )
@@ -22,10 +21,8 @@ public class BrandDTO {
 
         return new BrandDTO(
                 entity.getId(),
-                entity.getName(),
-                entity.getIngredients().stream()
-                        .map(IngredientDTO::toDto)
-                        .collect(Collectors.toSet())
+                entity.getName()
         );
     }
+
 }

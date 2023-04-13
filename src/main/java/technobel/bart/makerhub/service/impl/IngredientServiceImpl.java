@@ -17,12 +17,10 @@ import java.util.List;
 public class IngredientServiceImpl implements IngredientService {
 
     private final UnitOfMeasureRepository unitOfMeasureRepository;
-    private final BrandRepository brandRepository;
     private final IngredientRepository ingredientRepository;
 
-    public IngredientServiceImpl(UnitOfMeasureRepository unitOfMeasureRepository, BrandRepository brandRepository, IngredientRepository ingredientRepository) {
+    public IngredientServiceImpl(UnitOfMeasureRepository unitOfMeasureRepository,  IngredientRepository ingredientRepository) {
         this.unitOfMeasureRepository = unitOfMeasureRepository;
-        this.brandRepository = brandRepository;
         this.ingredientRepository = ingredientRepository;
     }
 
@@ -35,10 +33,6 @@ public class IngredientServiceImpl implements IngredientService {
                         .orElseThrow(() -> new RuntimeException("Unit of Measure not found"))
         );
 
-        ingredient.setBrand(
-                brandRepository.findById(form.getBrandId())
-                        .orElseThrow(() -> new RuntimeException("Brand not found"))
-        );
 
         ingredientRepository.save(ingredient);
     }
@@ -63,10 +57,6 @@ public class IngredientServiceImpl implements IngredientService {
                         .orElseThrow(() -> new RuntimeException("Unit of Measure not found"))
         );
 
-        toUpdate.setBrand(
-                brandRepository.findById(form.getBrandId())
-                        .orElseThrow(() -> new RuntimeException("Brand not found"))
-        );
 
         ingredientRepository.save(toUpdate);
     }

@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 import technobel.bart.makerhub.models.entity.Brand;
 import technobel.bart.makerhub.models.entity.Ingredient;
+import technobel.bart.makerhub.models.entity.IngredientBrand;
 import technobel.bart.makerhub.models.entity.UnitOfMeasure;
 
 import java.time.LocalDate;
@@ -17,13 +18,8 @@ public class IngredientDTO {
 
     private Long id;
     private String name;
-    private double price;
-    private String quantity;
-    private LocalDate expiration;
+    private Set<IngredientBrandDTO> ingredients;
     private UnitOfMeasureDTO unitOfMeasure;
-    private BrandDTO brand;
-
-
 
     public static IngredientDTO toDto(Ingredient entity){
 
@@ -33,28 +29,10 @@ public class IngredientDTO {
         return new IngredientDTO(
                 entity.getId(),
                 entity.getName(),
-                entity.getPrice(),
-                entity.getQuantity(),
-                entity.getExpiration(),
-                UnitOfMeasureDTO.toDto(entity.getUnitOfMeasure()),
-                BrandDTO.toDto(entity.getBrand())
+                entity.getIngredients().stream()
+                        .map(IngredientBrandDTO::toDto)
+                        .collect(Collectors.toSet()),
+                UnitOfMeasureDTO.toDto(entity.getUnitOfMeasure())
         );
-    }
-
-    @Data
-    @Builder
-    private static class BrandDTO{
-        private Long id;
-        private String name;
-
-        public static BrandDTO toDto(Brand entity){
-            if( entity == null )
-                return null;
-
-            return new BrandDTO(
-                    entity.getId(),
-                    entity.getName()
-            );
-        }
     }
 }

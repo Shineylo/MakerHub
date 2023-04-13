@@ -40,7 +40,7 @@ public class OrderServiceImpl implements OrderService {
 
             Product pro = productRepository.findById( product.getId() ).orElseThrow();
 
-            qttPro.setQtt(product.getQuantity());
+            qttPro.setQuantity(product.getQuantity());
             qttPro.setOrder(order);
             qttPro.setItem(pro);
 
@@ -71,7 +71,7 @@ public class OrderServiceImpl implements OrderService {
 
             Product pro = productRepository.findById( product.getId() ).orElseThrow();
 
-            qttPro.setQtt(product.getQuantity());
+            qttPro.setQuantity(product.getQuantity());
             qttPro.setOrder(toUpdate);
             qttPro.setItem(pro);
 

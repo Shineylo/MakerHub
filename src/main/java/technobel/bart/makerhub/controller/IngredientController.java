@@ -34,10 +34,6 @@ public class IngredientController {
         return ingredientService.getOne(id);
     }
 
-    @PostMapping("/{id:[0-9]+}/update")
-    public void updateIngredient(@PathVariable long id, @RequestBody @Valid IngredientForm form){
-        ingredientService.update(id,form);
-    }
 
     @PostMapping("/{id:[0-9]+}/delete")
     public String deleteIngredient(@PathVariable long id){

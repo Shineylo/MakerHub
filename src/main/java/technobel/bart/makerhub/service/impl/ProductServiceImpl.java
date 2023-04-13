@@ -42,7 +42,7 @@ public class ProductServiceImpl implements ProductService {
 
             Ingredient ing = ingredientRepository.findById( ingredient.getId() ).orElseThrow();
 
-            qttIng.setQtt(ingredient.getQuantity());
+            qttIng.setQuantity(ingredient.getQuantity());
             qttIng.setProduct(product);
             qttIng.setIngredient(ing);
 
@@ -74,7 +74,7 @@ public class ProductServiceImpl implements ProductService {
 
             Ingredient ing = ingredientRepository.findById( ingredient.getId() ).orElseThrow();
 
-            qttIng.setQtt(ingredient.getQuantity());
+            qttIng.setQuantity(ingredient.getQuantity());
             qttIng.setProduct(toUpdate);
             qttIng.setIngredient(ing);
 
