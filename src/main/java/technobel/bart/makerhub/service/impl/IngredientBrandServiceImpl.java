@@ -43,8 +43,8 @@ public class IngredientBrandServiceImpl implements IngredientBrandService {
 
     @Override
     public List<IngredientBrandDTO> getAllOfOneIngredient(long id){
-        return ingredientBrandRepository.findByIngredientId(id).stream()
-                .map(IngredientBrandDTO[]::toDto)
+        return ingredientBrandRepository.findAllByIngredientId(id).stream()
+                .map(IngredientBrandDTO::toDto)
                 .toList();
     }
 }
