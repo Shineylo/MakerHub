@@ -5,8 +5,10 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 import technobel.bart.makerhub.models.entity.Brand;
 import technobel.bart.makerhub.models.entity.Ingredient;
+import technobel.bart.makerhub.models.entity.IngredientBrand;
 import technobel.bart.makerhub.models.entity.UnitOfMeasure;
 import technobel.bart.makerhub.repository.BrandRepository;
+import technobel.bart.makerhub.repository.IngredientBrandRepository;
 import technobel.bart.makerhub.repository.IngredientRepository;
 import technobel.bart.makerhub.repository.UnitOfMeasureRepository;
 
@@ -16,15 +18,15 @@ import java.time.LocalDate;
 @Log4j2
 public class DataInit implements InitializingBean {
     private final IngredientRepository classroomRepository;
-
     private final BrandRepository brandRepository;
-
     private final UnitOfMeasureRepository unitOfMeasureRepository;
-    public DataInit(IngredientRepository classroomRepository, BrandRepository brandRepository, UnitOfMeasureRepository unitOfMeasureRepository) {
+    private final IngredientBrandRepository ingredientBrandRepository;
+    public DataInit(IngredientRepository classroomRepository, BrandRepository brandRepository, UnitOfMeasureRepository unitOfMeasureRepository, IngredientBrandRepository ingredientBrandRepository) {
 
         this.classroomRepository = classroomRepository;
         this.brandRepository = brandRepository;
         this.unitOfMeasureRepository = unitOfMeasureRepository;
+        this.ingredientBrandRepository = ingredientBrandRepository;
     }
 
     @Override
@@ -66,6 +68,17 @@ public class DataInit implements InitializingBean {
         i3.setUnitOfMeasure(piece);
 
         i3 = classroomRepository.save(i3);
+
+        /*IngredientBrand ib1 = new IngredientBrand();
+
+        ib1.setBrand(b1);
+        ib1.setIngredient(i1);
+        ib1.setPrice(1.01);
+        ib1.setQuantity(5);
+        ib1.setExpiration(LocalDate.now());
+
+        ib1 = ingredientBrandRepository.save(ib1);*/
+
     }
 
 }

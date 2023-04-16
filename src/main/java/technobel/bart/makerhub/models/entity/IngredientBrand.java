@@ -11,8 +11,6 @@ import java.time.LocalDate;
 @Setter
 public class IngredientBrand {
 
-    @EmbeddedId
-    private Id id;
 
     @MapsId("ingredientId")
     @ManyToOne
@@ -22,11 +20,14 @@ public class IngredientBrand {
     @ManyToOne
     private Brand brand;
 
+    @EmbeddedId
+    private Id id = new Id();
+
     @Column(name = "ingredient_price",nullable = false)
     private double price;
 
     @Column(name = "stock_quantity",nullable = false)
-    private String quantity;
+    private int quantity;
 
     @Column(name = "ingredient_expiration",nullable = false)
     private LocalDate expiration;

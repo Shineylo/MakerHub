@@ -13,8 +13,7 @@ public class IngredientBrandForm {
 
     @Digits(integer = 2, fraction = 2)
     private double price;
-    @NotBlank
-    private String quantity;
+    private int quantity;
     @NotNull
     private LocalDate expiration;
     @NotBlank

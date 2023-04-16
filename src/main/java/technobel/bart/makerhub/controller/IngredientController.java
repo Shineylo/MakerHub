@@ -40,9 +40,8 @@ public class IngredientController {
 
 
     @PostMapping("/{id:[0-9]+}/delete")
-    public String deleteIngredient(@PathVariable long id){
+    public void deleteIngredient(@PathVariable long id){
         ingredientService.delete(id);
-        return "redirect:/ingredient/all";
     }
 
 }

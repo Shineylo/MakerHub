@@ -5,7 +5,6 @@ import lombok.Data;
 import technobel.bart.makerhub.models.entity.Brand;
 import technobel.bart.makerhub.models.entity.Ingredient;
 import technobel.bart.makerhub.models.entity.IngredientBrand;
-import technobel.bart.makerhub.models.entity.OrderItem;
 
 import java.time.LocalDate;
 
@@ -15,7 +14,7 @@ public class IngredientBrandDTO {
     private Ingredient ingredient;
     private Brand brand;
     private double price;
-    private String quantity;
+    private int quantity;
     private LocalDate expiration;
 
     public static IngredientBrandDTO toDto(IngredientBrand entity){
