@@ -10,4 +10,6 @@ public interface IngredientBrandService {
     void create(IngredientBrandForm form);
 
     List<IngredientBrandDTO> getAllOfOneIngredient(long id);
+
+    void delete(long ingId, long brandId);
 }

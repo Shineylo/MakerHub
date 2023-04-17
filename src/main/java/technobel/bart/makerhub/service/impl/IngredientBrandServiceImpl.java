@@ -47,4 +47,13 @@ public class IngredientBrandServiceImpl implements IngredientBrandService {
                 .map(IngredientBrandDTO::toDto)
                 .toList();
     }
+
+
+    @Override
+    public void delete(long ingId, long brandId) {
+        if(!ingredientBrandRepository.existsByBrand_IdAndIngredient_Id(brandId,ingId))
+            throw new RuntimeException("Ingredient not found");
+
+        ingredientBrandRepository.deleteByBrand_IdAndIngredient_Id(brandId,ingId);
+    }
 }

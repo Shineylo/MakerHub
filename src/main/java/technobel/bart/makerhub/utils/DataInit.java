@@ -3,30 +3,31 @@ package technobel.bart.makerhub.utils;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
-import technobel.bart.makerhub.models.entity.Brand;
-import technobel.bart.makerhub.models.entity.Ingredient;
-import technobel.bart.makerhub.models.entity.IngredientBrand;
-import technobel.bart.makerhub.models.entity.UnitOfMeasure;
-import technobel.bart.makerhub.repository.BrandRepository;
-import technobel.bart.makerhub.repository.IngredientBrandRepository;
-import technobel.bart.makerhub.repository.IngredientRepository;
-import technobel.bart.makerhub.repository.UnitOfMeasureRepository;
+import technobel.bart.makerhub.models.entity.*;
+import technobel.bart.makerhub.repository.*;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Component
 @Log4j2
 public class DataInit implements InitializingBean {
+    private final ProductRepository productRepository;
     private final IngredientRepository classroomRepository;
     private final BrandRepository brandRepository;
     private final UnitOfMeasureRepository unitOfMeasureRepository;
     private final IngredientBrandRepository ingredientBrandRepository;
-    public DataInit(IngredientRepository classroomRepository, BrandRepository brandRepository, UnitOfMeasureRepository unitOfMeasureRepository, IngredientBrandRepository ingredientBrandRepository) {
+    private final QuantityIngredientRepository quantityIngredientRepository;
+    public DataInit(IngredientRepository classroomRepository, BrandRepository brandRepository, UnitOfMeasureRepository unitOfMeasureRepository, IngredientBrandRepository ingredientBrandRepository, QuantityIngredientRepository quantityIngredientRepository,
+                    ProductRepository productRepository) {
 
         this.classroomRepository = classroomRepository;
         this.brandRepository = brandRepository;
         this.unitOfMeasureRepository = unitOfMeasureRepository;
         this.ingredientBrandRepository = ingredientBrandRepository;
+        this.quantityIngredientRepository = quantityIngredientRepository;
+        this.productRepository = productRepository;
     }
 
     @Override
@@ -83,6 +84,25 @@ public class DataInit implements InitializingBean {
 
         ib1 = ingredientBrandRepository.save(ib1);
 
+
+        Product p1 = new Product();
+
+        p1.setName("test");
+        p1.setRecipe("Jeparle");
+        Set<QuantityIngredient> set = new HashSet<>();
+        p1 = productRepository.save(p1);
+
+        QuantityIngredient qi1 = new QuantityIngredient();
+        qi1.setQuantity(0.500);
+        qi1.setIngredient(i1);
+        qi1.setProduct(p1);
+
+        qi1 = quantityIngredientRepository.save(qi1);
+
+        set.add(qi1);
+        p1.setIngredients(set);
+
+        p1 = productRepository.save(p1);
     }
 
 }

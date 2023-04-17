@@ -11,7 +11,7 @@ import java.io.Serializable;
 public class QuantityIngredient {
 
     @EmbeddedId
-    private Id id;
+    private Id id = new Id();;
 
     @MapsId("productId")
     @ManyToOne
@@ -22,7 +22,7 @@ public class QuantityIngredient {
     private Ingredient ingredient;
 
     @Column(name = "ingredient_quantity", nullable = false)
-    private int quantity = 1;
+    private double quantity = 1;
 
     @Data
     @NoArgsConstructor
