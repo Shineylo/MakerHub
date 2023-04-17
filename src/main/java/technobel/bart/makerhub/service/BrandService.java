@@ -6,5 +6,6 @@ import technobel.bart.makerhub.models.dto.IngredientDTO;
 import java.util.List;
 
 public interface BrandService {
+
     List<BrandDTO> getAll();
 }

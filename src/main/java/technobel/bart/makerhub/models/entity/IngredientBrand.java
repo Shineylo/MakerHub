@@ -27,7 +27,7 @@ public class IngredientBrand {
     private double price;
 
     @Column(name = "stock_quantity",nullable = false)
-    private int quantity;
+    private double quantity;
 
     @Column(name = "ingredient_expiration",nullable = false)
     private LocalDate expiration;

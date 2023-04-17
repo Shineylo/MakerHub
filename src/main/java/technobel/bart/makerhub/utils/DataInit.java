@@ -41,12 +41,16 @@ public class DataInit implements InitializingBean {
 
         b1= brandRepository.save(b1);
 
-        kilo.setName("Kilo");
+        kilo.setName("Kg");
         kilo = unitOfMeasureRepository.save(kilo);
 
         UnitOfMeasure piece = new UnitOfMeasure();
         piece.setName("Pièce");
         piece = unitOfMeasureRepository.save(piece);
+
+        UnitOfMeasure liter = new UnitOfMeasure();
+        liter.setName("L");
+        liter = unitOfMeasureRepository.save(liter);
 
         Ingredient i1 = new Ingredient();
 
@@ -69,15 +73,15 @@ public class DataInit implements InitializingBean {
 
         i3 = classroomRepository.save(i3);
 
-        /*IngredientBrand ib1 = new IngredientBrand();
+        IngredientBrand ib1 = new IngredientBrand();
 
         ib1.setBrand(b1);
         ib1.setIngredient(i1);
         ib1.setPrice(1.01);
-        ib1.setQuantity(5);
+        ib1.setQuantity(5.970);
         ib1.setExpiration(LocalDate.now());
 
-        ib1 = ingredientBrandRepository.save(ib1);*/
+        ib1 = ingredientBrandRepository.save(ib1);
 
     }
 

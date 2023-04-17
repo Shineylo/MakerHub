@@ -38,8 +38,7 @@ public class IngredientController {
         return ingredientBrandService.getAllOfOneIngredient(id);
     }
 
-
-    @PostMapping("/{id:[0-9]+}/delete")
+    @DeleteMapping("/{id:[0-9]+}/delete")
     public void deleteIngredient(@PathVariable long id){
         ingredientService.delete(id);
     }

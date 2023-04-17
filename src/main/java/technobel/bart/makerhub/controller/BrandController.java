@@ -1,9 +1,6 @@
 package technobel.bart.makerhub.controller;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import technobel.bart.makerhub.models.dto.BrandDTO;
 import technobel.bart.makerhub.service.BrandService;
 
