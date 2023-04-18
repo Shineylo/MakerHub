@@ -5,9 +5,15 @@ import lombok.Data;
 import technobel.bart.makerhub.models.entity.Ingredient;
 import technobel.bart.makerhub.models.entity.QuantityIngredient;
 
+import java.util.stream.Collectors;
+
 @Builder
 @Data
 public class QuantityIngredientDTO {
+
+
+
+
 
     static class ProductDTO{
         private Long id;
@@ -46,7 +52,7 @@ public class QuantityIngredientDTO {
     }
 
     private ProductDTO product;
-    private Ingredient ingredient;
+    private IngredientDTO ingredient;
     private double quantity ;
 
     public static QuantityIngredientDTO toDto(QuantityIngredient entity){
@@ -59,7 +65,14 @@ public class QuantityIngredientDTO {
                         entity.getProduct().getName(),
                         entity.getProduct().getRecipe()
                 ),
-                entity.getIngredient(),
+                new IngredientDTO(
+                        entity.getIngredient().getId(),
+                        entity.getIngredient().getName(),
+                        entity.getIngredient().getIngredients().stream()
+                                .map(IngredientBrandDTO::toDto)
+                                .collect(Collectors.toSet()),
+                        UnitOfMeasureDTO.toDto(entity.getIngredient().getUnitOfMeasure())
+                ),
                 entity.getQuantity()
         );
     }

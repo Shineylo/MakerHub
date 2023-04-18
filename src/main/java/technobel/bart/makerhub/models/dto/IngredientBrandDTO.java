@@ -6,7 +6,6 @@ import technobel.bart.makerhub.models.entity.Brand;
 import technobel.bart.makerhub.models.entity.IngredientBrand;
 
 import java.time.LocalDate;
-import java.util.Set;
 
 @Builder
 @Data
@@ -49,7 +48,7 @@ public class IngredientBrandDTO {
     }
 
     private IngredientDTO ingredient;
-    private Brand brand;
+    private BrandDTO brand;
     private double price;
     private double quantity;
     private LocalDate expiration;
@@ -64,7 +63,10 @@ public class IngredientBrandDTO {
                         entity.getIngredient().getName(),
                         new UnitOfMeasureDTO(entity.getIngredient().getUnitOfMeasure().getId(),
                                 entity.getIngredient().getUnitOfMeasure().getName())),
-                entity.getBrand(),
+                new BrandDTO(
+                        entity.getBrand().getId(),
+                        entity.getBrand().getName()
+                ),
                 entity.getPrice(),
                 entity.getQuantity(),
                 entity.getExpiration()
