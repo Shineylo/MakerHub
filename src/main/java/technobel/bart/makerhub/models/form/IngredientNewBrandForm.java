@@ -9,17 +9,19 @@ import technobel.bart.makerhub.models.entity.IngredientBrand;
 import java.time.LocalDate;
 
 @Data
-public class IngredientBrandForm {
+public class IngredientNewBrandForm {
 
+    @NotNull
     @Digits(integer = 2, fraction = 2)
     private double price;
+    @NotNull
     private int quantity;
     @NotNull
     private LocalDate expiration;
-    @NotBlank
+    @NotNull
     private Long ingredientId;
     @NotBlank
-    private Long brandId;
+    private String brandName;
 
     public IngredientBrand toEntity(){
         IngredientBrand ingredientBrand = new IngredientBrand();

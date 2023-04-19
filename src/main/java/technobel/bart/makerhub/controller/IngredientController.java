@@ -4,7 +4,9 @@ import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 import technobel.bart.makerhub.models.dto.IngredientBrandDTO;
 import technobel.bart.makerhub.models.dto.IngredientDTO;
+import technobel.bart.makerhub.models.form.IngredientExistingBrandForm;
 import technobel.bart.makerhub.models.form.IngredientForm;
+import technobel.bart.makerhub.models.form.IngredientNewBrandForm;
 import technobel.bart.makerhub.service.IngredientBrandService;
 import technobel.bart.makerhub.service.IngredientService;
 
@@ -26,6 +28,12 @@ public class IngredientController {
     @PostMapping("/new")
     public void newIngredient(@RequestBody @Valid IngredientForm form){
         ingredientService.create(form);
+    }
+    @PostMapping("/newIngExistingBrand")
+    public void newIngredientExistingBrand(@RequestBody @Valid IngredientExistingBrandForm form){ingredientBrandService.createWithExistingBrand(form);
+    }
+    @PostMapping("/newIngNewBrand")
+    public void newIngredientNewBrand(@RequestBody @Valid IngredientNewBrandForm form){ingredientBrandService.createWithNewBrand(form);
     }
 
     @GetMapping("/all")
